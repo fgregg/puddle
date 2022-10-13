@@ -47,13 +47,16 @@ jobs:
           pip install https://github.com/fgregg/datasette/archive/refs/heads/no_limit_csv_publish.zip
       - name: get databases
         run: |
-          touch foo.db
+          wget https://github.com/fgregg/isbe-reportcards/releases/download/nightly/report_card.db.zip
+          wget https://github.com/fgregg/cps-graduation-rates/releases/download/nightly/cps_graduation_rates.db.zip
+          unzip report_card.db.zip
+          unzip cps_graduation_rates.db.zip
 
       - name: Deploy to Cloudrun
         run: |
           gcloud config set run/region us-central1
           gcloud config set project fgregg-puddle
-          datasette publish cloudrun foo.db \
+          datasette publish cloudrun report_card.db cps_graduation_rates.db \
             --memory 8Gi \
             --cpu 2 \
             --service puddle \
