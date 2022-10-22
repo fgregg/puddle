@@ -1,0 +1,28 @@
+title: A data puddle
+description_html: |-
+  <p>Databases that are interesting to <a href="https://twitter.com/forestgregg">Forest Gregg</a>, and maybe you too.</p>
+databases:
+  chicago_council:
+    title: Legislative information for the Chicago City Council
+    source: The City Clerk's Legislative Information System, scraped
+    source_url: https://github.com/opencivicdata/scrapers-us-municipal
+    description: This is a database of bills, votes, meetings, and council members of the City of Chicago's City Council. The data starts in late 2000 and is updated nightly.
+    tables:
+      bill:
+        sort_desc: created_at
+      billaction:
+        label_column: description
+        sort_desc: date
+      event:
+        sort_desc: start_date
+      eventagendaitem:
+        label_column: description
+      eventdocument:
+        label_column: note
+      eventmedia:
+        label_column: note
+      post:
+        label_column: label
+      voteevent:
+        label_column: motion_text
+        sort_desc: start_date
