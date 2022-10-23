@@ -53,10 +53,10 @@ jobs:
           unzip report_card.db.zip
           unzip cps_graduation_rates.db.zip
           unzip chicago_council.db.zip
-          sqlite-utils create-index chicago_council bill -- -created_at
-          sqlite-utils create-index chicago_council billaction -- -date
-          sqlite-utils create-index chicago_council event -- -start_date
-          sqlite-utils create-index chicago_council voteevent -- -start_date
+          sqlite-utils create-index chicago_council.db bill -- -created_at
+          sqlite-utils create-index chicago_council.db billaction -- -date
+          sqlite-utils create-index chicago_council.db event -- -start_date
+          sqlite-utils create-index chicago_council.db voteevent -- -start_date
 
       - name: Deploy to Cloudrun
         run: |
