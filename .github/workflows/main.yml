@@ -53,12 +53,14 @@ jobs:
           sqlite-utils create-index chicago_council.db billaction -- -date
           sqlite-utils create-index chicago_council.db event -- -start_date
           sqlite-utils create-index chicago_council.db voteevent -- -start_date
+          wget https://github.com/fgregg/ilcampaigncash/releases/download/nightly/il_campaign_disclosure.db.zip
+          unzip il_campaign_disclosure.db.zip
 
       - name: Deploy to Cloudrun
         run: |
           gcloud config set run/region us-central1
           gcloud config set project fgregg-puddle
-          datasette publish cloudrun chicago_council.db \
+          datasette publish cloudrun chicago_council.db il_campaign_disclosure.db \
             --memory 8Gi \
             --cpu 2 \
             --service puddle \
