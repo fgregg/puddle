@@ -55,7 +55,15 @@ jobs:
           sqlite-utils create-index chicago_council.db voteevent -- -start_date
           wget https://github.com/fgregg/ilcampaigncash/releases/download/nightly/il_campaign_disclosure.db.zip
           unzip il_campaign_disclosure.db.zip
-
+          sqlite-utils create-index il_campaign_disclosure.db receipts committee_id
+          sqlite-utils create-index il_campaign_disclosure.db receipts filed_doc_id
+          sqlite-utils create-index il_campaign_disclosure.db expenditures committee_id
+          sqlite-utils create-index il_campaign_disclosure.db expenditures filed_doc_id
+          sqlite-utils create-index il_campaign_disclosure.db d2_reports committee_id
+          sqlite-utils create-index il_campaign_disclosure.db d2_reports filed_doc_id
+          sqlite-utils create-index il_campaign_disclosure.db filed_docs committee_id
+          sqlite-utils analyze il_campaign_disclosure.db
+    
       - name: Deploy to Cloudrun
         run: |
           gcloud config set run/region us-central1
