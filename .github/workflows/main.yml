@@ -47,6 +47,8 @@ jobs:
           pip install https://github.com/fgregg/datasette/archive/refs/heads/no_limit_csv_publish.zip
       - name: get databases
         run: |
+          wget https://github.com/fgregg/service_requests/releases/download/nightly/service_requests.db.zip
+          unzip service_requests.db.zip
           wget https://github.com/datamade/chicago-council-scrapers/releases/download/nightly/chicago_council.db.zip
           unzip chicago_council.db.zip
           sqlite-utils create-index chicago_council.db bill -- -created_at
@@ -68,7 +70,7 @@ jobs:
         run: |
           gcloud config set run/region us-central1
           gcloud config set project fgregg-puddle
-          datasette publish cloudrun chicago_council.db il_campaign_disclosure.db \
+          datasette publish cloudrun *.db \
             --memory 8Gi \
             --cpu 2 \
             --service puddle \
