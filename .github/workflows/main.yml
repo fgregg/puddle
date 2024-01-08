@@ -73,8 +73,8 @@ jobs:
           gcloud config set run/region us-central1
           gcloud config set project fgregg-puddle
           datasette publish cloudrun *.db \
-            --memory 8Gi \
-            --cpu 2 \
+            --memory 4Gi \
+            --cpu 1 \
             --max-instances=2 \
             --service puddle \
             --extra-options="--crossdb --setting sql_time_limit_ms 100000 --cors --setting facet_time_limit_ms 500 --setting allow_facet off --setting trace_debug 1" \
