@@ -1,0 +1,4 @@
+databases:
+  cvr:
+    allow:
+      id: "*"
