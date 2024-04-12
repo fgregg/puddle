@@ -26,3 +26,6 @@ databases:
       voteevent:
         label_column: motion_text
         sort_desc: start_date
+  cvr:
+    allow:
+      id: "*"
