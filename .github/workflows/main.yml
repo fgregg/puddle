@@ -99,6 +99,7 @@ jobs:
             --install=datasette-block-robots \
             --install=datasette-pretty-traces \
             --install datasette-auth-passwords \
+            --install https://github.com/datamade/datasette-datatable/archive/refs/heads/main.zip \
             --plugin-secret datasette-auth-passwords root_password_hash '${{ env.hash }}' \
             --version-note=$GITHUB_RUN_NUMBER
       - name: keepalive
