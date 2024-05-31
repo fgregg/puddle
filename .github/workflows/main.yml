@@ -59,6 +59,7 @@ jobs:
           sqlite-utils create-index chicago_council.db voteevent -- -start_date
           wget https://github.com/fgregg/ilcampaigncash/releases/download/nightly/il_campaign_disclosure.db.zip
           unzip il_campaign_disclosure.db.zip
+          cat scripts/make_donation.sql | sqlite3 il_campaign_disclosure.db
           sqlite-utils create-index il_campaign_disclosure.db receipts committee_id
           sqlite-utils create-index il_campaign_disclosure.db receipts filed_doc_id
           sqlite-utils create-index il_campaign_disclosure.db expenditures committee_id
