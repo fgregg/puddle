@@ -67,6 +67,8 @@ jobs:
           sqlite-utils create-index il_campaign_disclosure.db d2_reports committee_id
           sqlite-utils create-index il_campaign_disclosure.db d2_reports filed_doc_id
           sqlite-utils create-index il_campaign_disclosure.db filed_docs committee_id
+          sqlite-utils create-index il_campaign_disclosure.db donation amount
+          sqlite-utils create-index il_campaign_disclosure.db donation received_date
           sqlite-utils analyze il_campaign_disclosure.db
           wget https://github.com/fgregg/cmap-legistar/releases/download/nightly/cmap.db.zip
           unzip cmap.db.zip
