@@ -31,5 +31,5 @@ databases:
       id: "*"
   il_campaign_disclosure:
     tables:
-      donations:
+      donation:
         hidden: true
