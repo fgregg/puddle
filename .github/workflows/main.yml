@@ -73,7 +73,9 @@ jobs:
           wget https://github.com/fgregg/cmap-legistar/releases/download/nightly/cmap.db.zip
           unzip cmap.db.zip
           wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2024.db.zip
+          wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2022_11.db.zip
           unzip -P "$UNZIP_PASSWORD" cvr_2024.db.zip
+          unzip -P "$UNZIP_PASSWORD_2022" cvr_2022_11.db.zip
       - name: Install Datasette plugins
         run: |
           datasette install datasette-auth-passwords datasette-auth-tokens
