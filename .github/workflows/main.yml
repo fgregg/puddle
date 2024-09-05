@@ -48,6 +48,7 @@ jobs:
       - name: get databases
         env:
           UNZIP_PASSWORD: ${{ secrets.UNZIP_PASSWORD }}
+          UNZIP_PASSWORD_2022: ${{ secrets.UNZIP_PASSWORD_2022 }}
         run: |
           wget https://github.com/fgregg/service_requests/releases/download/nightly/service_requests.db.zip
           unzip service_requests.db.zip
