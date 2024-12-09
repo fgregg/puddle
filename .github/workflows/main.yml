@@ -52,14 +52,17 @@ jobs:
         run: |
           wget https://github.com/fgregg/service_requests/releases/download/nightly/service_requests.db.zip
           unzip service_requests.db.zip
+          rm service_requests.db.zip
           wget https://github.com/datamade/chicago-council-scrapers/releases/download/nightly/chicago_council.db.zip
           unzip chicago_council.db.zip
+          rm chicago_council.db.zip
           sqlite-utils create-index chicago_council.db bill -- -created_at
           sqlite-utils create-index chicago_council.db billaction -- -date
           sqlite-utils create-index chicago_council.db event -- -start_date
           sqlite-utils create-index chicago_council.db voteevent -- -start_date
           wget https://github.com/fgregg/ilcampaigncash/releases/download/nightly/il_campaign_disclosure.db.zip
           unzip il_campaign_disclosure.db.zip
+          rm il_campaign_disclosure.db.zip
           cat scripts/make_donation.sql | sqlite3 il_campaign_disclosure.db
           sqlite-utils create-index il_campaign_disclosure.db receipts committee_id
           sqlite-utils create-index il_campaign_disclosure.db receipts filed_doc_id
@@ -73,12 +76,16 @@ jobs:
           sqlite-utils analyze il_campaign_disclosure.db
           wget https://github.com/fgregg/cmap-legistar/releases/download/nightly/cmap.db.zip
           unzip cmap.db.zip
+          rm cmap.db.zip
           wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2024.db.zip
           wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2022_11.db.zip
           wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2024_11.db.zip
           unzip -P "$UNZIP_PASSWORD" cvr_2024.db.zip
+          rm cvr_2024.db.zip
           unzip -P "$UNZIP_PASSWORD_2022" cvr_2022_11.db.zip
+          rm cvr_2022_11.db.zip
           unzip cvr_2024_11.db.zip
+          rm cvr_2024_11.db.zip
       - name: Install Datasette plugins
         run: |
           datasette install datasette-auth-passwords datasette-auth-tokens
