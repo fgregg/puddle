@@ -28,8 +28,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - id: 'auth'
@@ -79,11 +77,8 @@ jobs:
           wget https://github.com/fgregg/cmap-legistar/releases/download/nightly/cmap.db.zip
           unzip cmap.db.zip
           rm cmap.db.zip
-          wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2024.db.zip
           wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2022_11.db.zip
           wget https://github.com/fgregg/cast-vote-record/releases/download/v1/cvr_2024_11.db.zip
-          unzip -P "$UNZIP_PASSWORD" cvr_2024.db.zip
-          rm cvr_2024.db.zip
           unzip -P "$UNZIP_PASSWORD_2022" cvr_2022_11.db.zip
           rm cvr_2022_11.db.zip
           unzip cvr_2024_11.db.zip
