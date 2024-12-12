@@ -50,9 +50,6 @@ jobs:
           UNZIP_PASSWORD: ${{ secrets.UNZIP_PASSWORD }}
           UNZIP_PASSWORD_2022: ${{ secrets.UNZIP_PASSWORD_2022 }}
         run: |
-          wget https://github.com/fgregg/service_requests/releases/download/nightly/service_requests.db.zip
-          unzip service_requests.db.zip
-          rm service_requests.db.zip
           wget https://github.com/datamade/chicago-council-scrapers/releases/download/nightly/chicago_council.db.zip
           unzip chicago_council.db.zip
           rm chicago_council.db.zip
